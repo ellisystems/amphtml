@@ -1,0 +1,60 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <script>
+     (function() {
+         var v = location.search.substr(1);
+         if (!(/^\d+(-canary)?$/.test(v))) return;
+         var u = 'https://3p.ampproject.net/'+encodeURIComponent(v)+'/f.js';
+         document.write('<script'+' src="'+encodeURI(u)+'"><'+'/script>');
+     })();
+    </script>
+    <script async src="http://cdn.yldbt.com/js/yieldbot.intent.js"></script>
+</head>
+<body style="margin:0">
+    <div id="c" style="position:absolute;top:0;left:0;bottom:0;right:0;">
+        <script>
+         var ybotq = ybotq || [];
+
+         draw3p(function(config, done) {
+             var m = window.context.master;
+             if (config && config.type === 'doubleclick' && config.slot === '/2476204/multi-size' && !m.ybEnabled) {
+                 m.ybEnabled = true;
+                 ybotq.push(function() {
+                     yieldbot.psn('1234');
+                     yieldbot.defineSlot('medrec', {sizes: [[300, 250],[300, 600]]});
+                     yieldbot.enableAsync();
+                     yieldbot.go();
+                 });
+
+                 ybotq.push(function() {
+                     var pageCriteria = yieldbot.getPageCriteria(),
+                         pageSlots = pageCriteria !== '' ? pageCriteria.split(',') : [];
+                     for (var i = 0; i < pageSlots.length; i++) {
+                         var slotInfo = pageSlots[i].split(':'),
+                             slot = slotInfo[0],
+                             size = slotInfo[1],
+                             bid = 0;
+
+                         if (slotInfo.length && slotInfo[2]) {
+                             bid = parseFloat(slotInfo[2], 10);
+                         }
+
+                         var sizes = size.split('x');
+                         sizes[0] = parseInt(sizes[0], 10);
+                         sizes[1] = parseInt(sizes[1], 10);
+
+                         config.targeting = {ybot_ad:'y', ybot_slot: slot};
+                     }
+                     done(config);
+                 });
+             } else {
+                 done(config);
+             }
+         });
+        </script>
+    </div>
+    <script>if (window.docEndCallback) window.docEndCallback()</script>
+</body>
+</html>
