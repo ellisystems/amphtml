@@ -29,6 +29,7 @@ export const adPrefetch = {
   smartadserver: 'https://ec-ns.sascdn.com/diff/js/smart.js',
   yieldmo: 'https://static.yieldmo.com/ym.amp1.js',
   revcontent: 'https://labs-cdn.revcontent.com/build/amphtml/revcontent.amp.min.js',
+  yieldbot: 'https://cdn.yldbt.com/js/yieldbot.intent.js',
 };
 
 /**
@@ -62,6 +63,9 @@ export const adPreconnect = {
     'https://trends.revcontent.com',
     'https://cdn.revcontent.com',
     'https://img.revcontent.com',
+  ],
+  yieldbot: [
+    'https://cdn.yldbt.com/js/yieldbot.intent.js',
   ]
 };
 
